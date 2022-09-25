@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>JsonPowerDB project Demonstration</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- MATERIAL DESIGN ICONIC FONT -->
+	<link rel="stylesheet" href="fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+
+
+
+	<!-- STYLE CSS -->
+	<link rel="stylesheet" href="css/style.css">
+
+	<script src="http://login2explore.com/jpdb/resources/js/0.0.3/jpdb-commons.js"></script>
+	<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+	<div class="wrapper">
+		<div class="inner">
+			<form action="">
+				<h3>JsonPowerDB Project</h3>
+				<p>This is the project created with JsonPowerDB as the backend.</p>
+
+					<form id="StudentForm" method="post">
+
+				<label class="form-group">
+					<input type="text" class="form-control" id="studentName" required>
+					<span>Your Name</span>
+					<span class="border"></span>
+				</label>
+
+
+				<label class="form-group">
+					<input type="text"  class="form-control"  id="studentEmail" required>
+					<span for="">Your Mail</span>
+					<span class="border"></span>
+				</label>
+
+				<label class="form-group">
+					<input type="text" class="form-control"  id="sudentPhone" required>
+					<span for="">Your Phone</span>
+					<span class="border"></span>
+				</label>
+
+
+				<label class="form-group">
+					<input type="text" class="form-control" id="studentCollege"  required>
+					<span for="">Your College Name</span>
+					<span class="border"></span>
+				</label>
+
+
+				<label class="form-group">
+					<input type="text" class="form-control" id="studentBranch" required>
+					<span for="">Your Branch Name</span>
+					<span class="border"></span>
+				</label>
+
+				<label class="form-group">
+					<input type="text" class="form-control" id="studentRollNumber" required>
+					<span for="">Your Roll Number</span>
+					<span class="border"></span>
+				</label>
+
+
+				<!--button to insert-->
+				<button onclick="saveStudentDetails()">Submit
+					<i class="zmdi zmdi-arrow-right"></i>
+				</button>
+				<a href="/html/default.asp">Delete a Student</a>
+				<a href="../project/showStudent.html">Search A student</a>
+				<a href="../project/updateStudent.html">Update student details</a>
+			</form>
+		</div>
+	</div>
+<script>
+
+//student name section
+
+$("#studentName").focus();
+function validateAndGetFormData() {
+var studentName = $("#studentName").val();
+if (studentName === "") {
+alert("Student Name is Required Value");
+$("#studentName").focus();
+return "";
+}
+//student Email section
+var studentEmail = $("#studentEmail").val();
+if (studentEmail === "") {
+alert("Student Email is Required Value");
+$("#studentEmail").focus();
+return "";
+}
+
+//student phone section
+
+var sudentPhone = $("#sudentPhone").val();
+if (sudentPhone === "") {
+alert("Student phone number is Required Value");
+$("#sudentPhone").focus();
+return "";
+}
+
+// student college section
+var studentCollege = $("#studentCollege").val();
+if (studentCollege === "") {
+alert("Student College name is Required Value");
+$("#studentCollege").focus();
+return "";
+}
+
+//student branch section
+var studentBranch = $("#studentBranch").val();
+if (studentBranch === "") {
+alert("Student Branch name is Required Value");
+$("#studentBranch").focus();
+return "";
+}
+
+//student roll number section
+var studentRollNumber = $("#studentRollNumber").val();
+if (studentRollNumber === "") {
+alert("Student roll number is Required Value");
+$("#studentRollNumber").focus();
+return "";
+}
+
+
+var jsonStrObj = {
+	studentName: studentName,//name
+	studentEmail: studentEmail, // email
+	studentPhone: sudentPhone, //Phone
+	studentCollege: studentCollege,
+	studentBranch: studentBranch,
+	studentRollNumber: studentRollNumber,
+};
+return JSON.stringify(jsonStrObj);
+}
+
+
+function saveStudentDetails() {
+var jsonStr = validateAndGetFormData();
+if (jsonStr === "") {
+return;
+}
+var putReqStr = createPUTRequest("90937771|-31949298668390483|90941719",
+jsonStr, "Students", "BTech");
+alert(putReqStr);
+jQuery.ajaxSetup({async: false});
+var resultObj = executeCommandAtGivenBaseUrl(putReqStr,
+"http://api.login2explore.com:5577", "/api/iml");
+alert(JSON.stringify(resultObj));
+jQuery.ajaxSetup({async: true});
+resetForm();
+}
+
+</script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+
+</html>

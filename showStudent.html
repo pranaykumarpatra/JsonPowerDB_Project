@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>JsonPowerDB Project</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="http://login2explore.com/jpdb/resources/js/0.0.3/jpdb-commons.js"></script>
+    </head>
+    <body>
+			<center><h1>Search Studet</h1></center>
+	 <center><input id="studentRollNumber" maxlength="50" placeholder="Student Roll Number" name="studentRollNumber" type="text" /><br><br>
+			 <input type="button" value="Search Student" onclick="showData();"/></center>
+	 <p id="showDetails"></p>
+
+    <script>
+        function executeCommand(reqString, dbBaseUrl, apiEndPointUrl) {
+            var url = dbBaseUrl + apiEndPointUrl;
+            var jsonObj;
+            $.post(url, reqString, function (result) {
+                jsonObj = JSON.parse(result);
+            }).fail(function (result) {
+                var dataJsonObj = result.responseText;
+                jsonObj = JSON.parse(dataJsonObj);
+            });
+            return jsonObj;
+        }
+        function showData(){
+            var token = "90937771|-31949298668390483|90941719";
+            var dbname = "Students";
+            var relationName = "BTech";
+            var studentRollNumber = document.getElementById("studentRollNumber").value;
+            var jsonStr = {
+                studentRollNumber : studentRollNumber,
+            };
+            var reqString = createGETRequest(token, dbname, relationName, JSON.stringify(jsonStr));
+            alert(reqString);
+            jQuery.ajaxSetup({async: false});
+            var resultObj = executeCommand(reqString,
+                    "http://api.login2explore.com:5577", "/api/irl");
+            jQuery.ajaxSetup({async: true});
+
+            var data = JSON.stringify(resultObj);
+
+
+            var res = data.split("\"");
+            var mainContainer = document.getElementById("showDetails");
+            mainContainer.innerHTML  = "Name: " + res[14].replace("\\","") + " ,  " + "      Email : " + res[6].replace("\\","")
+                + "  , " + "     Phone : " + res[22].replace("\\","") +" ,  " + "        Branch : " + res[10].replace("\\", "")+
+								" ,  " + "        College : " + res[26].replace("\\", "");
+
+
+        }
+    </script>
+    </body>
+</html>
