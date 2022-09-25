@@ -27,6 +27,32 @@
 - It is low level (raw) form of data and is also human readable.
 - It helps developers in faster coding, in-turn reduces development cost.
 
+### Benefits of using JsonPowerDB
+
+- JsonPowerDB (JPDB) is a Next Generation, Creative, and Disruptive Multi-mode DBMS_ with numerous unique selling points.
+- High Performance CRUD processes using a proprietary algorithm. Many times faster than traditional DBMS.
+- Serverless support for speedier development - A user interface developer can create a fully dynamic application.
+- DBMS with built-in web / application server and embedded cache provides lightning-fast performance.
+- Native NoSQL on the server provides the best query performance.
+- There is built-in functionality for querying multiple JPDB databases.
+- Document DB, Key-Value DB, and RDBMS support are all available.
+- Schema-free development and maintenance.
+- Web-services API - Works with any programming language that supports HTTP.
+- A pluggable API Framework - A developer can create a pluggable API that can be plugged into any of our cloud JPDB instances.
+- API development framework standardisation makes the development process easier, more readable, and less mistake prone.
+- Multiple layers of security.
+- Quick, easy to use Real-time, in-memory database management system.
+
+
+### Use cases:
+
+* All RDMS use cases.
+* All key-value use cases.
+* All document use cases.
+* Time series/geospatial analytics.
+* Real time application for data analytics.
+* Live working HTML templates.
+* Any software application that needs backend DB. (Dynamic web-apps/Mobile/Desktop Apps)
 
  ### 🤝🏻 &nbsp;Connect with Me
 
@@ -37,4 +63,7 @@
 </p>
 
 ![star](https://github.com/pranaykumarpatra/JsonPowerDB_Project/blob/main/images/Capture.png)&nbsp;
+![star](https://github.com/pranaykumarpatra/JsonPowerDB_Project/blob/main/images/dashboard.png)&nbsp;
+![star](https://github.com/pranaykumarpatra/JsonPowerDB_Project/blob/main/images/1.png)&nbsp;
+
 
